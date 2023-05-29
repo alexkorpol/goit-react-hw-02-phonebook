@@ -4,10 +4,14 @@ import Contacts from './Contacts/Contacts';
 import Forma from './Forma/Forma';
 import { nanoid } from 'nanoid'
 import { Notify } from 'notiflix';
+import { Title } from './Wrapper/Wrapper.styled';
+import Filter from './Filter/Filter';
 
   class App extends Component {
     state = {
-    contacts: data,
+      contacts: data,
+      filter: '',
+
     };
 
 
@@ -47,11 +51,21 @@ if (contactIsList) {
     }));
   };
 
+    // ! ====== Write a content of filter to state ======
+    changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+    };
+
+
     render() {
+      const { filter } = this.state;
       return (
         <>
-
-          <Forma  onSubmit={this.addNewContact}/>
+          <Title>Phonebook</Title>
+          <Forma onSubmit={this.addNewContact} />
+          <Title>Contacts</Title>
+          const {filter} = this.state;
+          <Filter value={filter} onChange={this.changeFilter} />
           <Contacts
             contacts={this.state.contacts}
             pressDeleteContact={this.deleteContact}
