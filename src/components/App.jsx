@@ -16,13 +16,18 @@ import Filter from './Filter/Filter';
 
 
     // ! ====== Add contact to state ======
-    addNewContact = ({ name, number, contactIsList}) => {
+    addNewContact = ({ name, number, contactIsList }) => {
     const newNameToLowerCase = name.toLowerCase();
     const {  contacts } = this.state;
 
     contacts.forEach(contact => {
       if (contact.name.toLowerCase() === newNameToLowerCase && contact.number === number) {
         Notify.failure(`${contact.name}: ${contact.number} is already in contacts`)
+        contactIsList = true;
+        return;
+      }
+      if (contact.number === number) {
+        Notify.failure(`${contact.number} existed in contact ${contact.name}`)
         contactIsList = true;
         return;
       }
@@ -51,23 +56,33 @@ if (contactIsList) {
     }));
   };
 
-    // ! ====== Write a content of filter to state ======
-    changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
+    // ! ====== Write a content of filter to state from user======
+    valueInputFilter = event => {
+      this.setState({ filter: event.currentTarget.value });
+      console.log("filter", this.state.filter)
     };
+
+    // ! ======
+    getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const seekLetterOfFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(seekLetterOfFilter)
+    );
+  };
 
 
     render() {
       const { filter } = this.state;
+      const visibleContacts = this.getVisibleContacts();
       return (
         <>
           <Title>Phonebook</Title>
           <Forma onSubmit={this.addNewContact} />
           <Title>Contacts</Title>
-          const {filter} = this.state;
-          <Filter value={filter} onChange={this.changeFilter} />
+          <Filter value={filter} onChange={this.valueInputFilter} />
           <Contacts
-            contacts={this.state.contacts}
+            contacts={visibleContacts}
             pressDeleteContact={this.deleteContact}
         />
         </>

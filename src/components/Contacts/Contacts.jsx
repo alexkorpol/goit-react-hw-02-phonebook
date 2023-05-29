@@ -1,16 +1,21 @@
 import React from 'react';
-import { Button, Item } from './Contacts.styled';
+import { Item, List } from './Contacts.styled';
+import { Button, Span } from 'components/Forma/Forma.styled';
 
 const Contacts = ({ contacts, pressDeleteContact }) => {
   return (
-    <ul>
+    <List>
       {contacts.map(({ id, name, number }) => (
         <Item key={id}>
           {name + ' : ' + number}
-          <Button type="button" onClick={() => pressDeleteContact(id)}>Delete</Button>
+          <Button type="button"
+            onClick={() => pressDeleteContact(id)}
+          >
+            <Span>Delete</Span>
+          </Button>
         </Item>
       ))}
-    </ul>
+    </List>
   );
 };
 

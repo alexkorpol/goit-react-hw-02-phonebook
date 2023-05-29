@@ -5,6 +5,7 @@ display: flex;
 justify-content: center;
 `
 export const LabelFilter = styled.label`
-color: ${(p) => p.theme.colors.grey};
+color: #000;
+
 `
 export const InputFilter = styled.input``
