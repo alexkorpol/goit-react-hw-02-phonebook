@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Button, Item } from './Contacts.styled';
 
-const Contacts = ({ data }) => {
+const Contacts = ({ contacts, pressDeleteContact }) => {
   return (
     <ul>
-      {data.map(({ id, name, number }) => (
-        <li key={id}>
+      {contacts.map(({ id, name, number }) => (
+        <Item key={id}>
           {name + ' : ' + number}
-          <button type="button" ></button>
-        </li>
+          <Button type="button" onClick={() => pressDeleteContact(id)}>Delete</Button>
+        </Item>
       ))}
     </ul>
   );
