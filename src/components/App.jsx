@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-
-
+import data from './data/data.json'
+import Contacts from './Contacts/Contacts';
 
   class App extends Component {
   state = {
-    contacts: initialContacts,
-    filter: '',
-    isAdded: false,
+    contacts: data,
   };
 
     render() {
       return (
+        <>
+          <Contacts data = {data}
+        />
+        </>
 
       )
     }
