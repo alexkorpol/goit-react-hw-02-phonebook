@@ -1,6 +1,7 @@
 import React from 'react';
 import { Item, List } from './Contacts.styled';
 import { Button, Span } from 'components/Forma/Forma.styled';
+import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, pressDeleteContact }) => {
   return (
@@ -17,6 +18,10 @@ const Contacts = ({ contacts, pressDeleteContact }) => {
       ))}
     </List>
   );
+};
+
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired
 };
 
 export default Contacts;

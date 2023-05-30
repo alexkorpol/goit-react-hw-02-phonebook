@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid'
 import { Notify } from 'notiflix';
 import { Title } from './Wrapper/Wrapper.styled';
 import Filter from './Filter/Filter';
+import Wrapper from './Wrapper/Wrapper';
 
   class App extends Component {
     state = {
@@ -56,14 +57,13 @@ if (contactIsList) {
     }));
   };
 
-    // ! ====== Write a content of filter to state from user======
+    // ! ====== Write a content of filter to state from user ======
     valueInputFilter = event => {
       this.setState({ filter: event.currentTarget.value });
-      console.log("filter", this.state.filter)
     };
 
-    // ! ======
-    getVisibleContacts = () => {
+    // ! ====== Function-filter contacts for render ======
+    visibleContacts = () => {
     const { filter, contacts } = this.state;
     const seekLetterOfFilter = filter.toLowerCase();
     return contacts.filter(contact =>
@@ -74,9 +74,9 @@ if (contactIsList) {
 
     render() {
       const { filter } = this.state;
-      const visibleContacts = this.getVisibleContacts();
+      const visibleContacts = this.visibleContacts();
       return (
-        <>
+        <Wrapper>
           <Title>Phonebook</Title>
           <Forma onSubmit={this.addNewContact} />
           <Title>Contacts</Title>
@@ -85,7 +85,7 @@ if (contactIsList) {
             contacts={visibleContacts}
             pressDeleteContact={this.deleteContact}
         />
-        </>
+        </Wrapper>
 
       )
     }

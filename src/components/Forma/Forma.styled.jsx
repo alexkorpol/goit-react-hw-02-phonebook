@@ -6,12 +6,14 @@ export const Form = styled.form`
   align-items: center;
 `
 export const Label = styled.label`
-
+  color: blue;
 `
 export const Input = styled.input`
   padding: 10px;
   width: 350px;
-
+  color: blue;
+  border-color: blue;
+  border-radius: 5px;
 `
 export const Button = styled.button`
   display: flex;
@@ -21,13 +23,18 @@ export const Button = styled.button`
   padding: 5px 10px 5px;
   margin-top: 20px;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 4px;
+
+  &:hover{
+  color: red;
+  background-color: #000;
+  cursor: pointer;
+  }
 `
 export const Span = styled.span`
 display: flex;
 justify-content:center;
-
 `

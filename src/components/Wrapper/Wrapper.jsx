@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from './Wrapper.styled';
 import PropTypes from 'prop-types';
 
- const Layout = ({ children }) => {
+ const Wrapper = ({ children }) => {
   return (
     <Container>
       <main>{children}</main>
@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
   );
 };
 
-Layout.propTypes = {
+Wrapper.propTypes = {
    children: PropTypes.any.isRequired,
 };
 
-export default Layout;
+export default Wrapper;

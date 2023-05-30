@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Input, Label, Span } from './Forma.styled';
 import { nanoid } from 'nanoid'
 
+
 class Forma extends Component {
   state = {
     name: '',
@@ -13,7 +14,6 @@ handleChange = nameValueInput => event => {
     this.setState({
       [nameValueInput]: target.value,
     });
-  return (console.log("state", this.state))
   };
 
 
@@ -75,6 +75,7 @@ handleSubmit = e => {
     )
    }
 }
+
   export default Forma;
 
 

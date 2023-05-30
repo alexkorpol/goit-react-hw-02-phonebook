@@ -4,8 +4,7 @@ export const FormFilter = styled.form`
 display: flex;
 justify-content: center;
 `
-export const LabelFilter = styled.label`
+export const Label = styled.label`
 color: #000;
-
 `
-export const InputFilter = styled.input``
+export const Input = styled.input``
